@@ -9,7 +9,7 @@ These are the packages that will be used.
 #+begin_src shell
 npm init -y
 
-npm install --save express morgan dotenv pug pg express-async-handler express-validator
+npm install --save express morgan dotenv pug pg express-async-handler express-validator express-session passport passport-local bcryptjs
 npm install --save-dev nodemon eslint node-pg-migrate
 #+end_src
 
@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS users (
   password_hash VARCHAR(255) NOT NULL,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 )
+INSERT INTO users (firstname, lastname, email, password_hash) VALUES ();
 #+END_src
 **** Posts Table
 #+begin_src sql
@@ -59,3 +60,19 @@ CREATE TABLE IF NOT EXISTS user_roles (
   PRIMARY KEY (user_id, role_id)
 )
 #+end_src
+** Code
+*** Views
+- [ ] Sign-up form
+- [ ] Log-in form
+- [ ] Posts
+- [ ] Member
+- [ ] Admin
+*** Database
+- [ ] Users
+- [ ] Posts
+*** Controllers
+- [ ] Users
+- [ ] Posts
+*** Routes
+- [ ] Posts
+- [ ] Users
