@@ -4,6 +4,8 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 dotenv.config();
 
+const authenticationRouter = require('./routes/authenticationRouter');
+
 const app = express();
 
 app.set('view engine', 'pug');
@@ -11,9 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-app.get('/', (req, res) => {
-  res.render('index', { title: 'Home Page' });
-});
+app.use('/authentication', authenticationRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {

@@ -1,0 +1,13 @@
+form.card.p-3(method='POST',action="/authentication/sign-up")
+  div.mb-3
+    input.form-control#firstname(type=text, placeholder='First Name', name='firstname')
+  div.mb-3
+    input.form-control#lastName(type=text, placeholder='Last Name', name='lastname')
+  div.mb-3
+    input.form-control#email(type=email, placeholder='Email', name='email')
+  div.mb-3
+    input.form-control#password(type=password, placeholder='Password', name='password')
+  div.mb-3
+    input.form-control#confimpassword(type=password, placeholder='Confirm Password', name='confirmpassword')
+  div.mb-3
+    button.btn.btn-primary.w-100(type=submit) Sign up
