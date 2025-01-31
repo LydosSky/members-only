@@ -1,17 +1,57 @@
-div.card#custom-form-width
+#custom-form-width.card
   h3.p-3.text-center.m-0 Sign Up
-  form.p-3(method='POST',action="/authentication/sign-up", novalidate)
-    div.mb-3
-      input.form-control#username(type='text', placeholder='Usern Name', name='username', required)
-    div.mb-3
-      input.form-control#firstname(type='text', placeholder='First Name', name='firstname', required)
-    div.mb-3
-      input.form-control#lastName(type='text', placeholder='Last Name', name='lastname', required)
-    div.mb-3
-      input.form-control#email(type='email', placeholder='Email', name='email', required)
-    div.mb-3
-      input.form-control#password(type='password', placeholder='Password', name='password', required)
-    div.mb-3
-      input.form-control#confimpassword(type='password', placeholder='Confirm Password', name='confirmPassword', required)
-    div.mb-3
+  form.p-3.needs-validation(
+    method='POST',
+    action='/authentication/sign-up',
+    novalidate
+  )
+    .mb-3
+      input#username.form-control(
+        type='text',
+        placeholder='User Name',
+        name='username',
+        required
+      )
+      .invalid-feedback Username is required
+    .mb-3
+      input#firstname.form-control(
+        type='text',
+        placeholder='First Name',
+        name='firstname',
+        required
+      )
+      .invalid-feedback First name is required
+    .mb-3
+      input#lastName.form-control(
+        type='text',
+        placeholder='Last Name',
+        name='lastname',
+        required
+      )
+      .invalid-feedback Last name is required
+    .mb-3
+      input#email.form-control(
+        type='email',
+        placeholder='Email',
+        name='email',
+        required
+      )
+      .invalid-feedback Please enter a valid email
+    .mb-3
+      input#password.form-control(
+        type='password',
+        placeholder='Password',
+        name='password',
+        required
+      )
+      .invalid-feedback Password must contain atleast one lowercase letter, one uppercase letter, one number, and one special character
+    .mb-3
+      input#confimpassword.form-control(
+        type='password',
+        placeholder='Confirm Password',
+        name='confirmPassword',
+        required
+      )
+      .invalid-feedback Passwords does not match
+    .mb-3
       button.btn.btn-primary.w-100(type=submit) Sign up

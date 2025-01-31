@@ -2,6 +2,30 @@ doctype html
 html
   include includes/head.pug
   body
-    div.container.vh-100.d-flex.justify-content-center.align-items-center
+    .container.vh-100.d-flex.justify-content-center.align-items-center
       if formName === "sign-up"
         include includes/sign-up-form.pug
+    script.
+      // Directly taken from bootstrap documentation
+      // https://getbootstrap.com/docs/5.3/forms/validation/#custom-styles
+      (() => {
+        "use strict";
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll(".needs-validation");
+
+        // Loop over them and prevent submission
+         Array.from(forms).forEach((form) => {
+          form.addEventListener(
+            "submit",
+            (event) => {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add("was-validated");
+            },
+            false,
+          );
+        });
+      })();
