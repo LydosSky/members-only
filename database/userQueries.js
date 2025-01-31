@@ -1,4 +1,5 @@
 const pool = require('./pool');
+const _ = require('lodash');
 
 /**
  * Create a new Users in the database
@@ -19,7 +20,7 @@ exports.createUser = ({ firstname, lastname, email, password_hash }) =>
 
 /**
  * Returns the user with given id
- * @param {Object} - id
+ * @param {Object} -
  * id Object is
  * {
  *   @property {number} id
@@ -28,4 +29,17 @@ exports.createUser = ({ firstname, lastname, email, password_hash }) =>
 exports.getUserById = ({ id }) =>
   pool
     .query('SELECT * FROM users WHERE id = $1', [id])
-    .then((response) => response.rows[0]);
+    .then((response) => _.first(response.rows));
+
+/**
+ * Returns the user with given username
+ * @param {Object} - username
+ * username Object is
+ * {
+ *   @property {string} username
+ * }
+ * */
+exports.getUserByUsername = ({ username }) =>
+  pool
+    .query('SELECT * FROM users WHERE username = $1', [username])
+    .then((response) => _.first(response.rows));

@@ -5,13 +5,13 @@ const pool = require('./database/pool');
 const userQueries = require('./database/userQueries');
 
 passport.use(
-  new LocalStrategy(function (id, password, done) {
+  new LocalStrategy(function (username, password, done) {
     return userQueries
-      .getUserById(id)
+      .getUserByUsername({ username })
       .then((user) => {
         if (!user)
           return done(null, false, {
-            message: 'There is no user with given ID.',
+            message: 'There is no user with given username.',
           });
         return bcryptjs
           .compare(password, user.password_hash)
@@ -31,7 +31,7 @@ passport.serializeUser(function (user, done) {
 
 passport.deserializeUser(function (id, done) {
   return userQueries
-    .getUserById(id)
+    .getUserById({ id })
     .then((user) => done(null, user))
     .catch((err) => done(err));
 });
