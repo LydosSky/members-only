@@ -33,7 +33,9 @@
   },
   "description": "",
   "devDependencies": {
+    "@prettier/plugin-pug": "^3.2.0",
     "eslint": "^9.19.0",
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "prettier": "^3.4.2"
   }
 }
