@@ -1,3 +1,4 @@
+- const createReducer = (name) => (prev, curr) => (curr.path === name ? 'is-invalid' : '');
 #custom-form-width.card
   h3.p-3.text-center.m-0 Sign Up
   form.p-3.needs-validation(
@@ -10,7 +11,8 @@
         type='text',
         placeholder='User Name',
         name='username',
-        required
+        required,
+        value=values.username
       )
       .invalid-feedback Username is required
     .mb-3
@@ -18,7 +20,8 @@
         type='text',
         placeholder='First Name',
         name='firstname',
-        required
+        required,
+        value=values.firstname
       )
       .invalid-feedback First name is required
     .mb-3
@@ -26,7 +29,8 @@
         type='text',
         placeholder='Last Name',
         name='lastname',
-        required
+        required,
+        value=values.lastname
       )
       .invalid-feedback Last name is required
     .mb-3
@@ -34,7 +38,8 @@
         type='email',
         placeholder='Email',
         name='email',
-        required
+        required,
+        value=values.email
       )
       .invalid-feedback Please enter a valid email
     .mb-3
@@ -42,16 +47,18 @@
         type='password',
         placeholder='Password',
         name='password',
+        aria-describedby='password-feedback',
         required
       )
-      .invalid-feedback Password must contain atleast one lowercase letter, one uppercase letter, one number, and one special character
+      #password-feedback.invalid-feedback Password must contain atleast one lowercase letter, one uppercase letter, one number, and one special character
     .mb-3
-      input#confimpassword.form-control(
+      input#confirmPassword.form-control(
         type='password',
         placeholder='Confirm Password',
         name='confirmPassword',
-        required
+        required,
+        aria-describedby='confirmPassword-feedback'
       )
-      .invalid-feedback Passwords does not match
+      #confirmPassword-feedback.invalid-feedback Passwords does not match
     .mb-3
       button.btn.btn-primary.w-100(type=submit) Sign up
