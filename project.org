@@ -23,15 +23,16 @@ CREATE DATABASE members_only;
 *** Database Tables
 **** Users Table
 #+begin_src sql
-CREATE TABLE IF NOT EXISTS users (
-  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  firstname VARCHAR(255) NOT NULL,
-  lastname VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL,
-  password_hash VARCHAR(255) NOT NULL,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-)
-INSERT INTO users (firstname, lastname, email, password_hash) VALUES ();
+  CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    firstname VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255) NOT NULL,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+  )
+  INSERT INTO users (firstname, lastname, email, password_hash) VALUES ();
 #+END_src
 **** Posts Table
 #+begin_src sql
@@ -62,7 +63,7 @@ CREATE TABLE IF NOT EXISTS user_roles (
 #+end_src
 ** Code
 *** Views
-- [ ] Sign-up form
+- [X] Sign-up form
 - [ ] Log-in form
 - [ ] Posts
 - [ ] Member
@@ -73,6 +74,10 @@ CREATE TABLE IF NOT EXISTS user_roles (
 *** Controllers
 - [ ] Users
 - [ ] Posts
+- [ ] Authentication
 *** Routes
 - [ ] Posts
 - [ ] Users
+- [ ] Authentication
+*** Styles
+- [X] Bootstrap
