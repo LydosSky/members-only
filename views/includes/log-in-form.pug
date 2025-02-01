@@ -1,0 +1,27 @@
+#custom-form-width.card
+  h3.p-3.text-center.m-0 Sign Up
+  form.p-3.needs-validation(
+    method='POST',
+    action='/authentication/log-in',
+    novalidate
+  )
+    .mb-3
+      input#username.form-control(
+        type='text',
+        placeholder='User Name',
+        name='username',
+        required,
+        value=values.username
+      )
+      .invalid-feedback Username is required
+    .mb-3
+      input#password.form-control(
+        type='password',
+        placeholder='Password',
+        name='password',
+        aria-describedby='password-feedback',
+        required
+      )
+      #password-feedback.invalid-feedback Password must contain at least 8 character, one lowercase letter, one uppercase letter, one number, and one special character
+    .mb-3
+      button.btn.btn-primary.w-100(type=submit) Log In

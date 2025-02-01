@@ -45,5 +45,11 @@ exports.postSignUp = function (req, res) {
 };
 
 exports.getLogIn = function (req, res) {
-  res.render(forms, createTemplate('log-in', 'Log In', [], {}));
+  res.render('forms', createTemplate('log-in', 'Log In', [], {}));
+};
+
+exports.postLogIn = function (req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty())
+    res.render('forms', createTemplate('log-in', 'Log In', errors.array(), {}));
 };
