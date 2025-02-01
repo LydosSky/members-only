@@ -13,6 +13,13 @@ npm install --save express morgan dotenv pug pg express-async-handler express-va
 npm install --save-dev nodemon eslint node-pg-migrate prettier @prettier/plugin-pug
 #+end_src
 
+*** Scripts
+#+begin_src json
+    "start": "nodemon app.js",
+    "format": "prettier --write '**/*.pug' --plugin=@prettier/plugin-pug"
+#+end_src
+
+
 ** Database
 Create a new database for project
 
