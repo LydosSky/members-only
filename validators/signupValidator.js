@@ -44,13 +44,13 @@ module.exports = [
   body('password')
     .trim()
     .isLength({ min: 8 })
-    .withMessage('Password must be at least 8 characters long')
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
-    )
-    .withMessage(
-      'Password must contain atleast one lowercase letter, one uppercase letter, one number, and one special character',
-    ),
+    .withMessage('Password must be at least 8 characters long'),
+  // .matches(
+  //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+  // )
+  // .withMessage(
+  //   'Password must contain atleast one lowercase letter, one uppercase letter, one number, and one special character',
+  // ),
   body('confirmPassword')
     .trim()
     .custom((value, { req }) => {

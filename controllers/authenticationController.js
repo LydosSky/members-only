@@ -38,7 +38,7 @@ exports.postSignUp = function (req, res) {
         password_hash,
       }),
     )
-    .then(() => res.send('User Created'))
+    .then(() => res.redirect('/authentication/log-in'))
     .catch((err) =>
       res.render('forms', createTemplate('sign-up', 'Sign Up', err, req.body)),
     );
@@ -52,4 +52,11 @@ exports.postLogIn = function (req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty())
     res.render('forms', createTemplate('log-in', 'Log In', errors.array(), {}));
+};
+
+exports.postLogOut = function (req, res, next) {
+  req.logout((err) => {
+    if (err) return next(err);
+    res.redirect('/');
+  });
 };
