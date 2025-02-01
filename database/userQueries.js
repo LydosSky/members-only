@@ -12,10 +12,16 @@ const _ = require('lodash');
  *   @property {string} password_hash
  * }
  * */
-exports.createUser = ({ firstname, lastname, email, password_hash }) =>
+exports.createUser = ({
+  username,
+  firstname,
+  lastname,
+  email,
+  password_hash,
+}) =>
   pool.query(
-    'INSERT INTO users (firstname, lastname, email, password_hash) VALUES ($1, $2, $3, $4)',
-    [firstname, lastname, email, password_hash],
+    'INSERT INTO users (username, firstname, lastname, email, password_hash) VALUES ($1, $2, $3, $4, $5)',
+    [username, firstname, lastname, email, password_hash],
   );
 
 /**
