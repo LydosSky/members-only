@@ -1,0 +1,10 @@
+h3.my-3.text-center Create New Post
+  form.p-3.needs-validation(
+    method='POST',
+    action='/authentication/sign-up',
+    novalidate
+  )
+    .mb-3
+      textarea.form-control.text-area-height(placeholder='Your Post')
+    .mb-3
+      button.btn.btn-primary.w-100(type=submit) Create Post

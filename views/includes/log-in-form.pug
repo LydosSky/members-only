@@ -1,5 +1,5 @@
 #custom-form-width.card
-  h3.p-3.text-center.m-0 Sign Up
+  h3.p-3.text-center.m-0 Log In
   form.p-3.needs-validation(
     method='POST',
     action='/authentication/log-in',
@@ -8,7 +8,7 @@
     .mb-3
       input#username.form-control(
         type='text',
-        placeholder='User Name',
+        placeholder='Username',
         name='username',
         required,
         value=values.username
@@ -25,3 +25,5 @@
       #password-feedback.invalid-feedback Password must contain at least 8 character, one lowercase letter, one uppercase letter, one number, and one special character
     .mb-3
       button.btn.btn-primary.w-100(type=submit) Log In
+    .mb-3
+      p.text-center If you are not a member you can <a class='link' href="/authentication/sign-up">Sign Up</a>
