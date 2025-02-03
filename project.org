@@ -19,7 +19,6 @@ npm install --save-dev nodemon eslint node-pg-migrate prettier @prettier/plugin-
     "format": "prettier --write '**/*.pug' --plugin=@prettier/plugin-pug"
 #+end_src
 
-
 ** Database
 Create a new database for project
 
@@ -49,6 +48,7 @@ CREATE TABLE IF NOT EXISTS posts (
   post TEXT NOT NULL,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
+INSERT INTO posts (user_id, post) VALUES
 #+end_src
 **** Roles Table
 #+begin_src sql
@@ -71,20 +71,20 @@ CREATE TABLE IF NOT EXISTS user_roles (
 ** Code
 *** Views
 - [X] Sign-up form
-- [ ] Log-in form
+- [X] Log-in form
 - [ ] Posts
 - [ ] Member
 - [ ] Admin
 *** Database
-- [ ] Users
-- [ ] Posts
+- [X] Users
+- [X] Posts
 *** Controllers
 - [ ] Users
-- [ ] Posts
-- [ ] Authentication
+- [X] Posts
+- [X] Authentication
 *** Routes
-- [ ] Posts
+- [X] Posts
 - [ ] Users
-- [ ] Authentication
+- [X] Authentication
 *** Styles
 - [X] Bootstrap
