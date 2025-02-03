@@ -1,10 +1,12 @@
 const pool = require('./pool');
+const _ = require('lodash');
 
 /**
  * Gets all of the posts
  *
  */
-exports.getAllPosts = () => pool.query('SELECT * FROM posts;');
+exports.getAllPosts = () =>
+  pool.query('SELECT * FROM posts;').then((response) => response.rows);
 
 /**
  * Get single post by ID
@@ -15,7 +17,9 @@ exports.getAllPosts = () => pool.query('SELECT * FROM posts;');
  * }
  * */
 exports.getPostById = ({ id }) =>
-  pool.query('SELECT * FROM posts WHERE id = $1', [id]);
+  pool
+    .query('SELECT * FROM posts WHERE id = $1', [id])
+    .then((response) => _.first(response.rows));
 
 /**
  * Create new post
