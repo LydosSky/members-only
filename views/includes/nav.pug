@@ -5,9 +5,14 @@ nav.navbar.bg-dark.border-bottom.border-body(data-bs-theme='dark')
       if currentUser
         .d-flex.gap-3.justify-content-center.align-items-center
           .navbar-text
-            i.bi.bi-person-fill
+            if currentUser.user_role === 'user'
+              i.bi.bi-person-fill-lock
+            else if currentUser.user_role === 'member'
+              i.bi.bi-person-fill-check
+            else if currentUser.user_role === 'admin'
+              i.bi.bi-person-fill-gear
+            span |
             span #{ currentUser.username }
-
           form.display-inline(method='POST', action='/authentication/log-out')
             button.nav-link(type=submit) Log Out
       else
