@@ -43,7 +43,7 @@ exports.createUser = ({
 exports.getUserById = ({ id }) =>
   pool
     .query(
-      'SELECT u.*, r.role_name FROM users u JOIN user_roles ur ON u.id = ur.user_id JOIN roles r ON ur.role_id = r.id WHERE id = $1',
+      'SELECT u.*, r.role_name FROM users u JOIN user_roles ur ON u.id = ur.user_id JOIN roles r ON ur.role_id = r.id WHERE u.id = $1',
       [id],
     )
     .then((response) => _.first(response.rows));
@@ -59,7 +59,7 @@ exports.getUserById = ({ id }) =>
 exports.getUserByUsername = ({ username }) =>
   pool
     .query(
-      'SELECT u.*, r.role_name FROM users u JOIN user_roles ur ON u.id = ur.user_id JOIN roles r ON ur.role_id = r.id WHERE username = $1',
+      'SELECT u.*, r.role_name FROM users u JOIN user_roles ur ON u.id = ur.user_id JOIN roles r ON ur.role_id = r.id WHERE u.username = $1',
       [username],
     )
     .then((response) => _.first(response.rows));

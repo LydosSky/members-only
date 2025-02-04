@@ -6,7 +6,11 @@ const _ = require('lodash');
  *
  */
 exports.getAllPosts = () =>
-  pool.query('SELECT * FROM posts;').then((response) => response.rows);
+  pool
+    .query(
+      'SELECT p.*, u.username FROM posts p JOIN users u ON p.user_id = u.id',
+    )
+    .then((response) => response.rows);
 
 /**
  * Get single post by ID
@@ -18,7 +22,10 @@ exports.getAllPosts = () =>
  * */
 exports.getPostById = ({ id }) =>
   pool
-    .query('SELECT * FROM posts WHERE id = $1', [id])
+    .query(
+      'SELECT p.*, u.username FROM posts p JOIN users u ON p.user_id = u.id WHERE p.id = $1',
+      [id],
+    )
     .then((response) => _.first(response.rows));
 
 /**
