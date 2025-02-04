@@ -1,5 +1,14 @@
 nav.navbar.bg-dark.border-bottom.border-body(data-bs-theme='dark')
   .container
-    .navbar-brand Members Only
+    a.navbar-brand.nav-link(href='/') Members Only
     .navbar-nav
-      a.nav-link(href='authentication/log-in') Log In
+      if currentUser
+        .d-flex.gap-3.justify-content-center.align-items-center
+          .navbar-text
+            i.bi.bi-person-fill
+            span #{ currentUser.username }
+
+          form.display-inline(method='POST', action='/authentication/log-out')
+            button.nav-link(type=submit) Log Out
+      else
+        a.nav-link(href='/authentication/log-in') Log In
