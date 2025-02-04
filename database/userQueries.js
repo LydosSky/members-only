@@ -1,5 +1,12 @@
+/**
+ * @fileOverview
+ * @name userQueries.js
+ * @author
+ * @license
+ */
 const pool = require('./pool');
 const _ = require('lodash');
+const roleQueries = require('./roleQueries');
 
 /**
  * Create a new Users in the database
@@ -19,11 +26,12 @@ exports.createUser = ({
   email,
   password_hash,
 }) =>
-  pool.query(
-    'INSERT INTO users (username, firstname, lastname, email, password_hash) VALUES ($1, $2, $3, $4, $5)',
-    [username, firstname, lastname, email, password_hash],
-  );
-
+  pool
+    .query(
+      'INSERT INTO users (username, firstname, lastname, email, password_hash) VALUES ($1, $2, $3, $4, $5) RETURNING id',
+      [username, firstname, lastname, email, password_hash],
+    )
+    .then((response) => roleQueries.defaultUserRole(_.first(response.rows).id));
 /**
  * Returns the user with given id
  * @param {Object} -
@@ -34,7 +42,10 @@ exports.createUser = ({
  * */
 exports.getUserById = ({ id }) =>
   pool
-    .query('SELECT * FROM users WHERE id = $1', [id])
+    .query(
+      'SELECT u.*, r.role_name FROM users u JOIN user_roles ur ON u.id = ur.user_id JOIN roles r ON ur.role_id = r.id WHERE id = $1',
+      [id],
+    )
     .then((response) => _.first(response.rows));
 
 /**
@@ -47,5 +58,15 @@ exports.getUserById = ({ id }) =>
  * */
 exports.getUserByUsername = ({ username }) =>
   pool
-    .query('SELECT * FROM users WHERE username = $1', [username])
+    .query(
+      'SELECT u.*, r.role_name FROM users u JOIN user_roles ur ON u.id = ur.user_id JOIN roles r ON ur.role_id = r.id WHERE username = $1',
+      [username],
+    )
     .then((response) => _.first(response.rows));
+
+exports.getUsers = () =>
+  pool
+    .query(
+      'SELECT u.*, r.role_name FROM users u JOIN user_roles ur ON u.id = ur.user_id JOIN roles r ON ur.role_id = r.id',
+    )
+    .then((response) => response.rows);
