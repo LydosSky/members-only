@@ -5,3 +5,7 @@
 .text-area-height {
   height: 250px;
 }
+
+.no-resize {
+  resize: none;
+}

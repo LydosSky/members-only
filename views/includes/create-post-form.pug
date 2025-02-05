@@ -1,10 +1,13 @@
-h3.my-3.text-center Create New Post
-  form.p-3.needs-validation(
-    method='POST',
-    action='/authentication/sign-up',
-    novalidate
-  )
+#custom-form-width.card
+  h3.my-3.text-center Create New Post
+  form.p-3.needs-validation(method='POST', action='/', novalidate)
     .mb-3
-      textarea.form-control.text-area-height(placeholder='Your Post')
+      textarea#post.no-resize.form-control.text-area-height(
+        placeholder='Your Post',
+        name='post',
+        aria-describedby='post-feedback',
+        required
+      )
+      #post-feedback.invalid-feedback Please enter a valid post
     .mb-3
-      button.btn.btn-primary.w-100(type=submit) Create Post
+      button.btn.btn-dark.w-100(type=submit) Create Post

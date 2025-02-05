@@ -4,3 +4,14 @@ html
   body
     include includes/nav.pug
     .container
+      each post in posts
+        .card.my-2
+          .card-body
+            p.card-text.fw-medium #{ post.post }
+          if currentUser
+            .card-footer
+              p.m-0.d-flex.gap-5.justify-content-end
+                span user:
+                  span.fw-bold #{ post.username }
+                span created:
+                  span.fw-bold #{ post.created_at }
