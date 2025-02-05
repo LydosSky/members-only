@@ -71,11 +71,11 @@ exports.postMember = function (req, res) {
   const errors = validationResult(req);
   const user_id = res.locals.currentUser.id;
   if (!errors.isEmpty())
-    res.render(
+    return res.render(
       'forms',
       createTemplate('member', 'Become a Member', errors.array()),
     );
-  roleQueries
+  return roleQueries
     .changeUserRole(user_id, UserRole.MEMBER)
     .then((response) => res.redirect('/'));
 };

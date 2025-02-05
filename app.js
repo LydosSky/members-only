@@ -7,6 +7,7 @@ const session = require('express-session');
 dotenv.config();
 
 const authenticationRouter = require('./routes/authenticationRouter');
+const postRouter = require('./routes/postRouter');
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/', postRouter);
 app.use('/authentication', authenticationRouter);
 
 const PORT = process.env.PORT || 3000;
