@@ -52,13 +52,14 @@ INSERT INTO posts (user_id, post) VALUES
 #+end_src
 **** Roles Table
 #+begin_src sql
-CREATE TABLE IF NOT EXISTS roles (
-  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  role_name VARCHAR(255) UNIQUE NOT NULL
-);
+  CREATE TABLE IF NOT EXISTS roles (
+    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    role_name VARCHAR(255) UNIQUE NOT NULL
+  );
 
-INSERT INTO roles (role_name) VALUES ('admin');
-INSERT INTO roles (role_name) VALUES ('member');
+  INSERT INTO roles (role_name) VALUES ('admin');
+  INSERT INTO roles (role_name) VALUES ('member');
+  INSERT INTO roles (role_name) VALUES ('user');
 #+end_src
 **** User Roles Table
 #+begin_src sql
@@ -72,19 +73,19 @@ CREATE TABLE IF NOT EXISTS user_roles (
 *** Views
 - [X] Sign-up form
 - [X] Log-in form
-- [ ] Posts
-- [ ] Member
+- [X] Posts
+- [X] Member
 - [ ] Admin
 *** Database
 - [X] Users
 - [X] Posts
 *** Controllers
-- [ ] Users
+- [X] Users
 - [X] Posts
 - [X] Authentication
 *** Routes
+- [X] Users
 - [X] Posts
-- [ ] Users
 - [X] Authentication
 *** Styles
 - [X] Bootstrap
