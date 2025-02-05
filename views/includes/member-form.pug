@@ -1,0 +1,17 @@
+#custom-form-width.card
+  form.p-3.needs-validation(
+    method='POST',
+    action='/authentication/member',
+    novalidate
+  )
+    p.text-center What is the Number?
+    .mb-3
+      input#answer.form-control(
+        type='text',
+        placeholder='Your Answer',
+        name='answer',
+        aria-describedby='answer-feedback',
+        required
+      )
+      #answer-feedback.invalid-feedback Answer must be number
+    button.btn.btn-dark.w-100(type='submit') Submit

@@ -3,7 +3,7 @@ const pool = require('./pool');
 /**
    For now there is 3 types of logged-in user
  */
-const UserRole = {
+exports.UserRole = {
   ADMIN: 1,
   MEMBER: 2,
   USER: 3,

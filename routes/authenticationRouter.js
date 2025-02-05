@@ -3,12 +3,15 @@ const authenticationController = require('../controllers/authenticationControlle
 const signupValidator = require('../validators/signupValidator');
 const loginValidator = require('../validators/loginValidator');
 const passport = require('../passport');
+const memberValidator = require('../validators/memberValidator');
 
 const router = Router();
 
 router.get('/sign-up', authenticationController.getSignUP);
-router.post('/sign-up', signupValidator, authenticationController.postSignUp);
+router.get('/member', authenticationController.getMember);
 router.get('/log-in', authenticationController.getLogIn);
+router.post('/sign-up', signupValidator, authenticationController.postSignUp);
+router.post('/member', memberValidator, authenticationController.postMember);
 router.post(
   '/log-in',
   passport.authenticate('local', {

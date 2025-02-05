@@ -8,6 +8,10 @@ html
         include includes/sign-up-form.pug
       else if formName === 'log-in'
         include includes/log-in-form.pug
+      else if formName === 'create-post'
+        include includes/create-post-form.pug
+      else if formName === 'member'
+        include includes/member-form.pug
     .toast(role='alert', arial-live='assertive', aria-atomic='true')
       .toast-header
         svg.bd-placeholder-img.rounded.me-2(

@@ -1,6 +1,14 @@
 nav.navbar.bg-dark.border-bottom.border-body(data-bs-theme='dark')
   .container
-    a.navbar-brand.nav-link(href='/') Members Only
+    .navbar-nav
+      .d-flex.gap-3.justify-content-center.align-items-center
+        a.navbar-brand.nav-link(href='/') Members Only
+        if currentUser.user_role === 'member' || currentUser.user_role === 'admin'
+          a.nav-link(href='/create')
+            i.bi.bi-plus-lg
+            span Create a post
+        if currentUser.user_role == 'user'
+          a.nav-link(href='/authentication/member') Become a member
     .navbar-nav
       if currentUser
         .d-flex.gap-3.justify-content-center.align-items-center
