@@ -76,6 +76,7 @@ CREATE TABLE IF NOT EXISTS user_roles (
 - [X] Posts
 - [X] Member
 - [ ] Admin
+  Deleting post by admin
 *** Database
 - [X] Users
 - [X] Posts
@@ -89,3 +90,5 @@ CREATE TABLE IF NOT EXISTS user_roles (
 - [X] Authentication
 *** Styles
 - [X] Bootstrap
+*** Error Handling
+- [ ] Application Wide Error Handling
